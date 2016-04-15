@@ -1,650 +1,359 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-</h:head>
-<ui:composition template="/template/template.xhtml">
-	<ui:define name="content">
-		<h:form id="ProjetoCreateForm">
-			<p:messages id="msgid"></p:messages>
-			<h:panelGroup id="display" layout="block">
-				<fieldset class="content-fieldset">
-					<legend>Auditoria</legend>
-					<div class="content-input">
-						<div class="group-input">
-						<p:outputLabel value="Código/Ano" />
-						<p:inputText id="idauditoria"
-							value="#{auditoriaBean.auditoria.idauditoria}" size="40"
-							required="true" />
-						</div>
-						<div class="group-input">
-							<p:inputText id="anoAuditoria"
-								value="#{auditoriaBean.auditoria.anoAuditoria}" size="10"
-								maxlength="4" required="true" />
-						</div>
-					</div>
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+    </h:head>
+    <ui:composition template="/template/template.xhtml">
+        <ui:define name="content">
+            <h:form id="ProjetoCreateForm">
+                <p:messages id="msgid"></p:messages>
+                <h:panelGroup id="display" layout="block">
+                    <fieldset class="content-fieldset">
+                        <legend>Auditoria</legend>
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="Código/Ano" />
+                                <p:inputText id="idauditoria"
+                                             value="#{auditoriaBean.auditoria.idauditoria}" size="40"
+                                             required="true" />
+                            </div>
+                            <div class="group-input">
+                                <p:inputText id="anoAuditoria"
+                                             value="#{auditoriaBean.auditoria.anoAuditoria}" size="10"
+                                             maxlength="4" required="true" />
+                            </div>
+                        </div>
 
-					<div class="content-input">
-						<p:outputLabel value="Título" />
-						<p:inputTextarea id="titulo"
-							value="#{auditoriaBean.auditoria.titulo}" cols="100" rows="3"
-							required="true" />
-					</div>
+                        <div class="content-input">
+                            <p:outputLabel value="Título" />
+                            <p:inputTextarea id="titulo"
+                                             value="#{auditoriaBean.auditoria.titulo}" cols="100" rows="3"
+                                             required="true" />
+                        </div>
 
-					<div class="content-input">
-						<p:outputLabel value="Objetivo" />
-						<p:inputTextarea id="objetivo"
-							value="#{auditoriaBean.auditoria.objetivo}" cols="100" rows="3"
-							required="true" />
-					</div>
+                        <div class="content-input">
+                            <p:outputLabel value="Objetivo" />
+                            <p:inputTextarea id="objetivo"
+                                             value="#{auditoriaBean.auditoria.objetivo}" cols="100" rows="3"
+                                             required="true" />
+                        </div>
 
-					<div class="content-input">
-						<div class="group-input">
-							<p:outputLabel value="No do Processo" />
-							<p:inputText id="numprocesso"
-								value="#{auditoriaBean.auditoria.numprocesso}" size="10" />
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Relator " />
-							<p:inputText id="relator"
-								value="#{auditoriaBean.auditoria.relator}" size="40" />
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="de Exercícios Anteriores" />
-							<p:selectBooleanButton id="exerciciosAnteriores"
-								value="#{auditoriaBean.auditoria.exerciciosAnteriores}"
-								onLabel="Sim" offLabel="Não" styleClass="select-boolean-button"
-								rendered="#{auditoriaBean.auditoria != null}" />
-						</div>
-					</div>
-					<div class="content-input">
-						<div class="group-input">
-							<p:outputLabel value="Motivação Fiscal" />
-							<p:inputText id="motivacaoFiscal"
-								value="#{auditoriaBean.auditoria.motivacaoFiscal}" size="40" />
-						</div>
-					</div>
-					<div class="content-input">
-						<div class="group-input">
-							<p:outputLabel value="Instrumento de Fiscalização" />
-							<p:selectOneMenu id="idTipoFiscalizacao"
-								value="#{auditoriaBean.auditoria.tipoFiscalizacao}"
-								converter="converterPadrao">
-								<f:selectItem itemLabel="Selecione o tipo da fiscalização"
-									itemValue="" />
-								<f:selectItems value="#{sistemaBean.tipoFiscalizacaoList}"
-									var="varTF" itemLabel="#{varTF.nome}" itemValue="#{varTF}" />
-							</p:selectOneMenu>
-						</div>
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="No do Processo" />
+                                <p:inputText id="numprocesso"
+                                             value="#{auditoriaBean.auditoria.numprocesso}" size="10" />
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Relator " />
+                                <p:inputText id="relator"
+                                             value="#{auditoriaBean.auditoria.relator}" size="40" />
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="de Exercícios Anteriores" />
+                                <p:selectBooleanButton id="exerciciosAnteriores"
+                                                       value="#{auditoriaBean.auditoria.exerciciosAnteriores}"
+                                                       onLabel="Sim" offLabel="Não" styleClass="select-boolean-button"
+                                                       rendered="#{auditoriaBean.auditoria != null}" />
+                            </div>
+                        </div>
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="Motivação Fiscal" />
+                                <p:inputText id="motivacaoFiscal"
+                                             value="#{auditoriaBean.auditoria.motivacaoFiscal}" size="40" />
+                            </div>
+                        </div>
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="Instrumento de Fiscalização" />
+                                <p:selectOneMenu id="idTipoFiscalizacao"
+                                                 value="#{auditoriaBean.auditoria.tipoFiscalizacao}"
+                                                 converter="converterPadrao">
+                                    <f:selectItem itemLabel="Selecione o tipo da fiscalização"
+                                                  itemValue="" />
+                                    <f:selectItems value="#{sistemaBean.tipoFiscalizacaoList}"
+                                                   var="varTF" itemLabel="#{varTF.nome}" itemValue="#{varTF}" />
+                                </p:selectOneMenu>
+                            </div>
 
-						<div class="group-input">
-							<p:outputLabel value="Unidade Fiscalizadora" />
-							<p:selectOneMenu id="idUnidadefiscalizadora"
-								value="#{auditoriaBean.auditoria.unidadeFiscalizadora}"
-								converter="converterPadrao">
-								<f:selectItem itemLabel="Selecione a Unidade Fiscalizadora"
-									itemValue="" />
-								<f:selectItems value="#{sistemaBean.unidadeFiscalizadoraList}"
-									var="varUF" itemLabel="#{varUF.sigla}" itemValue="#{varUF}" />
-							</p:selectOneMenu>
-						</div>
-					</div>
+                            <div class="group-input">
+                                <p:outputLabel value="Unidade Fiscalizadora" />
+                                <p:selectOneMenu id="idUnidadefiscalizadora"
+                                                 value="#{auditoriaBean.auditoria.unidadeFiscalizadora}"
+                                                 converter="converterPadrao">
+                                    <f:selectItem itemLabel="Selecione a Unidade Fiscalizadora"
+                                                  itemValue="" />
+                                    <f:selectItems value="#{sistemaBean.unidadeFiscalizadoraList}"
+                                                   var="varUF" itemLabel="#{varUF.sigla}" itemValue="#{varUF}" />
+                                </p:selectOneMenu>
+                            </div>
+                        </div>
 
-					<div class="content-input">
-						<div class="group-input">
+                        <div class="content-input">
+                            <div class="group-input">
 
-							<p:outputLabel value="Critério de Seleção" />
-							<p:selectOneMenu id="idCriteriosSelecao"
-								value="#{auditoriaBean.auditoria.criteriosSelecao}"
-								converter="converterPadrao">
-								<f:selectItem itemLabel="Seleione um critério para a auditora"
-									itemValue="" />
-								<f:selectItems value="#{sistemaBean.criteriosSelecaoList}"
-									var="varCS" itemLabel="#{varCS.nome}" itemValue="#{varCS}" />
-							</p:selectOneMenu>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Origem da Auditoria" />
-							<p:selectOneMenu id="idOrigemProjeto"
-								value="#{auditoriaBean.auditoria.origemAuditoria}"
-								converter="converterPadrao">
-								<f:selectItem itemLabel="Selecione uma origem" itemValue="" />
-								<f:selectItems value="#{sistemaBean.origemAuditoriaList}"
-									var="varOP" itemLabel="#{varOP.nome}" itemValue="#{varOP}" />
-							</p:selectOneMenu>
-						</div>
-					</div>
+                                <p:outputLabel value="Critério de Seleção" />
+                                <p:selectOneMenu id="idCriteriosSelecao"
+                                                 value="#{auditoriaBean.auditoria.criteriosSelecao}"
+                                                 converter="converterPadrao">
+                                    <f:selectItem itemLabel="Seleione um critério para a auditora"
+                                                  itemValue="" />
+                                    <f:selectItems value="#{sistemaBean.criteriosSelecaoList}"
+                                                   var="varCS" itemLabel="#{varCS.nome}" itemValue="#{varCS}" />
+                                </p:selectOneMenu>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Origem da Auditoria" />
+                                <p:selectOneMenu id="idOrigemProjeto"
+                                                 value="#{auditoriaBean.auditoria.origemAuditoria}"
+                                                 converter="converterPadrao">
+                                    <f:selectItem itemLabel="Selecione uma origem" itemValue="" />
+                                    <f:selectItems value="#{sistemaBean.origemAuditoriaList}"
+                                                   var="varOP" itemLabel="#{varOP.nome}" itemValue="#{varOP}" />
+                                </p:selectOneMenu>
+                            </div>
+                        </div>
 
-					<div class="content-input">
-						<p:outputLabel value="Orgão(s) Fiscalizado(s):" />
-						<p:autoComplete id="idUnidadeGestora"
-							value="#{auditoriaBean.auditoria.listaUnidadeGestoraTmp}"
-							completeMethod="#{auditoriaBean.completeUG}" var="varUGP"
-							itemValue="#{varUGP}" itemLabel="#{varUGP.sigla}" multiple="true"
-							converter="converterAutoCompletUG" forceSelection="true">
+                        <div class="content-input">
+                            <p:outputLabel value="Orgão(s) Fiscalizado(s):" />
+                            <p:autoComplete id="idUnidadeGestora"
+                                            value="#{auditoriaBean.auditoria.listaUnidadeGestoraTmp}"
+                                            completeMethod="#{auditoriaBean.completeUG(query)}" var="varUGP"
+                                            itemValue="#{varUGP}" itemLabel="#{varUGP.sigla}" multiple="true"
+                                            converter="converterAutoCompletUG" forceSelection="true">
+                                
+                                <p:ajax event="itemSelect" listener="#{auditoriaBean.selectUGA}"
+                                        global="false" update=":ProjetoCreateForm:idUnidadeGestora" />
 
-							<p:ajax event="itemSelect" listener="#{auditoriaBean.selectUGA}"
-								global="false" update=":ProjetoCreateForm:idUnidadeGestora" />
+                                <p:ajax event="itemUnselect"
+                                        listener="#{auditoriaBean.unselectUGA}" global="false"
+                                        update=":ProjetoCreateForm:idUnidadeGestora" />
 
-							<p:ajax event="itemUnselect"
-								listener="#{auditoriaBean.unselectUGA}" global="false"
-								update=":ProjetoCreateForm:idUnidadeGestora" />
-						</p:autoComplete>
-					</div>
+                            </p:autoComplete>
 
+                        </div>					
+                    </fieldset>
+                    <fieldset class="content-fieldset">
+                        <legend>Etapa: Planejamento</legend>
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="Iníco (Previsto)" />
+                                <p:calendar id="planInicioPrev" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.planInicioPrev}"
+                                            showOn="button" locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:planDiasUteisPrev" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:planDiasUteisPrev" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Fim (Previsto)" />
+                                <p:calendar id="planFimPrev" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.planFimPrev}" showOn="button"
+                                            locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:planDiasUteisPrev" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:planDiasUteisPrev" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Dias Úteis (Previsto)" />
+                                <h:inputText id="planDiasUteisPrev"
+                                             value="#{auditoriaBean.auditoria.planDiasUteisPrev}"
+                                             styleClass="ui-inputfield" />
+                            </div>
+                        </div>
 
-					<!-- 					<table width="50%" cellpadding="0" cellspacing="10" border="0"> -->
-					<!-- 						<tr> -->
-					<!-- 							<td colspan="2"> -->
-					<!-- 								<table> -->
-					<!-- 									<tr> -->
-					<!-- 										<td><p:outputLabel value="Código/Ano: " /></td> -->
-					<!-- 										<td><p:inputText id="idauditoria" -->
-					<!-- 												value="#{auditoriaBean.auditoria.idauditoria}" size="40" -->
-					<!-- 												required="true" /> -->
-					<!-- 												/ -->
-					<!-- 												<p:inputText id="anoAuditoria" value="#{auditoriaBean.auditoria.anoAuditoria}" size="10" maxlength="4" required="true"></p:inputText> -->
-					<!-- 												</td> -->
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="Início (Realizado)" />
+                                <p:calendar id="planInicioReal" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.planInicioReal}"
+                                            showOn="button" locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:planDiasUteisReal" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:planDiasUteisReal" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Fim (Realizado)" />
+                                <p:calendar id="planFimReal" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.planFimReal}" showOn="button"
+                                            locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:planDiasUteisReal" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:planDiasUteisReal" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Dias Úteis (Realizado)" />
+                                <h:inputText id="planDiasUteisReal"
+                                             value="#{auditoriaBean.auditoria.planDiasUteisReal}"
+                                             styleClass="ui-inputfield" />
+                            </div>
+                        </div>					
+                    </fieldset>
+                    <fieldset class="content-fieldset">
+                        <legend>Etapa: Execução</legend>
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="Iníco (Previsto)" />
+                                <p:calendar id="execInicioPrev" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.execInicioPrev}"
+                                            showOn="button" locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:execDiasUteisPlan" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:execDiasUteisPlan" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Fim (Previsto)" />
+                                <p:calendar id="execFimPrev" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.execFimPrev}" showOn="button"
+                                            locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:execDiasUteisPlan" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:execDiasUteisPlan" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Dias Úteis (Previsto)" />
+                                <h:inputText id="execDiasUteisPlan"
+                                             value="#{auditoriaBean.auditoria.execDiasUteisPrev}"
+                                             styleClass="ui-inputfield" />
+                            </div>
+                        </div>
 
-					<!-- 									</tr> -->
-					<!-- 								</table> -->
-					<!-- 							</td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Título: " /></td> -->
-					<!-- 							<td><p:inputTextarea id="titulo" -->
-					<!-- 									value="#{auditoriaBean.auditoria.titulo}" cols="100" rows="3" -->
-					<!-- 									required="true" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Objetivo: " /></td> -->
-					<!-- 							<td><p:inputTextarea id="objetivo" -->
-					<!-- 									value="#{auditoriaBean.auditoria.objetivo}" cols="100" rows="3" -->
-					<!-- 									required="true" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="No do Processo: " /></td> -->
-					<!-- 							<td><p:inputText id="numprocesso" -->
-					<!-- 									value="#{auditoriaBean.auditoria.numprocesso}" size="10" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Relator: " /></td> -->
-					<!-- 							<td><p:inputText id="relator" -->
-					<!-- 									value="#{auditoriaBean.auditoria.relator}" size="40" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="de Exercícios Anteriores:" /></td> -->
-					<!-- 							<td><p:selectBooleanButton id="exerciciosAnteriores" -->
-					<!-- 									value="#{auditoriaBean.auditoria.exerciciosAnteriores}" -->
-					<!-- 									onLabel="Sim" offLabel="Não" style="width:60px" -->
-					<!-- 									rendered="#{auditoriaBean.auditoria != null}" /> -->
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="Início (Realizado)" />
+                                <p:calendar id="execInicioReal" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.execInicioReal}"
+                                            showOn="button" locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:execDiasUteisReal" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:execDiasUteisReal" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Fim (Realizado)" />
+                                <p:calendar id="execFimReal" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.execFimReal}" showOn="button"
+                                            locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:execDiasUteisReal" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:execDiasUteisReal" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Dias Úteis (Realizado)" />
+                                <h:inputText id="execDiasUteisReal"
+                                             value="#{auditoriaBean.auditoria.execDiasUteisReal}"
+                                             styleClass="ui-inputfield" />
+                            </div>
+                        </div>					
+                    </fieldset>
+                    <fieldset class="content-fieldset">
+                        <legend>Etapa: Emissão de Relatório</legend>
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="Iníco (Previsto)" />
+                                <p:calendar id="relaInicioPrev" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.relaInicioPrev}"
+                                            showOn="button" locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:relaDiasUteisPrev" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:relaDiasUteisPrev" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Fim (Previsto)" />
+                                <p:calendar id="relaFimPrev" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.relaFimPrev}" showOn="button"
+                                            locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:relaDiasUteisPrev" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:relaDiasUteisPrev" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Dias Úteis (Previsto)" />
+                                <h:inputText id="relaDiasUteisPrev"
+                                             value="#{auditoriaBean.auditoria.relaDiasUteisPrev}"
+                                             styleClass="ui-inputfield" />
+                            </div>
+                        </div>
 
-					<!-- 								&nbsp;&nbsp;&nbsp; <p:outputLabel value="Motivação Fiscal" /> <p:inputText -->
-					<!-- 									id="motivacaoFiscal" -->
-					<!-- 									value="#{auditoriaBean.auditoria.motivacaoFiscal}" size="40" /> -->
-					<!-- 							</td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Instrumento de Fiscalização" /></td> -->
-					<!-- 							<td><p:selectOneMenu id="idTipoFiscalizacao" -->
-					<!-- 									value="#{auditoriaBean.auditoria.tipoFiscalizacao}" -->
-					<!-- 									converter="converterPadrao"> -->
-					<!-- 									<f:selectItem itemLabel="Selecione o tipo da fiscalização" -->
-					<!-- 										itemValue="" /> -->
-					<!-- 									<f:selectItems value="#{sistemaBean.tipoFiscalizacaoList}" -->
-					<!-- 										var="varTF" itemLabel="#{varTF.nome}" itemValue="#{varTF}" /> -->
-					<!-- 								</p:selectOneMenu></td> -->
-					<!-- 						</tr> -->
+                        <div class="content-input">
+                            <div class="group-input">
+                                <p:outputLabel value="Início (Realizado)" />
+                                <p:calendar id="relaInicioReal" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.relaInicioReal}"
+                                            showOn="button" locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:relaDiasUteisReal" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:relaDiasUteisReal" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Fim (Realizado)" />
+                                <p:calendar id="relaFimReal" pattern="dd/MM/yyyy"
+                                            value="#{auditoriaBean.auditoria.relaFimReal}" showOn="button"
+                                            locale="pt_BR">
+                                    <p:ajax event="change" listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:relaDiasUteisReal" />
+                                    <p:ajax event="dateSelect"
+                                            listener="#{auditoriaBean.dateChange}"
+                                            update=":ProjetoCreateForm:relaDiasUteisReal" />
+                                </p:calendar>
+                            </div>
+                            <div class="group-input">
+                                <p:outputLabel value="Dias Úteis (Realizado)" />
+                                <h:inputText id="relaDiasUteisReal"
+                                             value="#{auditoriaBean.auditoria.relaDiasUteisReal}"
+                                             styleClass="ui-inputfield" />
+                            </div>
+                        </div>					
+                    </fieldset>
+                </h:panelGroup>
 
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Unidade Fiscalizadora" /></td> -->
-					<!-- 							<td><p:selectOneMenu id="idUnidadefiscalizadora" -->
-					<!-- 									value="#{auditoriaBean.auditoria.unidadeFiscalizadora}" -->
-					<!-- 									converter="converterPadrao"> -->
-					<!-- 									<f:selectItem itemLabel="Selecione a Unidade Fiscalizadora" -->
-					<!-- 										itemValue="" /> -->
-					<!-- 									<f:selectItems value="#{sistemaBean.unidadeFiscalizadoraList}" -->
-					<!-- 										var="varUF" itemLabel="#{varUF.sigla}" itemValue="#{varUF}" /> -->
-					<!-- 								</p:selectOneMenu></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Critério de Seleção" /></td> -->
-					<!-- 							<td> -->
+                <div class="group-button">
+                    <p:commandButton value="Salvar" update=":ProjetoCreateForm"
+                                     styleClass="success" actionListener="#{auditoriaBean.salvar}"
+                                     icon="ic-save" />
+                    <p:commandButton value="Cancelar" styleClass="danger"
+                                     action="#{auditoriaBean.abrirListaAuditoria}" icon="ic-cancel"
+                                     immediate="true" />
+                </div>
 
-					<!-- 							<p:selectOneMenu id="idCriteriosSelecao" -->
-					<!-- 									value="#{auditoriaBean.auditoria.criteriosSelecao}" -->
-					<!-- 									converter="converterPadrao"> -->
-					<!-- 									<f:selectItem itemLabel="Seleione um critério para a auditora" -->
-					<!-- 										itemValue="" /> -->
-					<!-- 									<f:selectItems value="#{sistemaBean.criteriosSelecaoList}" -->
-					<!-- 										var="varCS" itemLabel="#{varCS.nome}" itemValue="#{varCS}" /> -->
-					<!-- 								</p:selectOneMenu></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Origem da Auditoria" /></td> -->
-					<!-- 							<td><p:selectOneMenu id="idOrigemProjeto" -->
-					<!-- 									value="#{auditoriaBean.auditoria.origemAuditoria}" -->
-					<!-- 									converter="converterPadrao"> -->
-					<!-- 									<f:selectItem itemLabel="Selecione uma origem" itemValue="" /> -->
-					<!-- 									<f:selectItems value="#{sistemaBean.origemAuditoriaList}" -->
-					<!-- 										var="varOP" itemLabel="#{varOP.nome}" itemValue="#{varOP}" /> -->
-					<!-- 								</p:selectOneMenu></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Orgão(s) Fiscalizado(s):" /></td> -->
-					<!-- 							<td><p:autoComplete id="idUnidadeGestora" -->
-					<!-- 									value="#{auditoriaBean.auditoria.listaUnidadeGestoraTmp}" -->
-					<!-- 									completeMethod="#{auditoriaBean.completeUG}" var="varUGP" -->
-					<!-- 									itemValue="#{varUGP}" itemLabel="#{varUGP.sigla}" -->
-					<!-- 									multiple="true" converter="converterAutoCompletUG" -->
-					<!-- 									forceSelection="true"> -->
-
-					<!-- 									<p:ajax event="itemSelect" -->
-					<!-- 										listener="#{auditoriaBean.selectUGA}" global="false" -->
-					<!-- 										update=":ProjetoCreateForm:idUnidadeGestora" /> -->
-
-					<!-- 									<p:ajax event="itemUnselect" -->
-					<!-- 										listener="#{auditoriaBean.unselectUGA}" global="false" -->
-					<!-- 										update=":ProjetoCreateForm:idUnidadeGestora" /> -->
-					<!-- 								</p:autoComplete></td> -->
-					<!-- 						</tr> -->
-					<!-- 					</table> -->
-				</fieldset>
-				<fieldset class="content-fieldset">
-					<legend>Etapa: Planejamento</legend>
-					<div class="content-input">
-						<div class="group-input">
-							<p:outputLabel value="Iníco (Previsto)" />
-							<p:calendar id="planInicioPrev" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.planInicioPrev}"
-								showOn="button" locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:planDiasUteisPrev" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:planDiasUteisPrev" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Fim (Previsto)" />
-							<p:calendar id="planFimPrev" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.planFimPrev}" showOn="button"
-								locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:planDiasUteisPrev" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:planDiasUteisPrev" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Dias Úteis (Previsto)" />
-							<h:inputText id="planDiasUteisPrev"
-								value="#{auditoriaBean.auditoria.planDiasUteisPrev}"
-								styleClass="ui-inputfield" />
-						</div>
-					</div>
-
-					<div class="content-input">
-						<div class="group-input">
-							<p:outputLabel value="Início (Realizado)" />
-							<p:calendar id="planInicioReal" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.planInicioReal}"
-								showOn="button" locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:planDiasUteisReal" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:planDiasUteisReal" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Fim (Realizado)" />
-							<p:calendar id="planFimReal" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.planFimReal}" showOn="button"
-								locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:planDiasUteisReal" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:planDiasUteisReal" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Dias Úteis (Realizado)" />
-							<h:inputText id="planDiasUteisReal"
-								value="#{auditoriaBean.auditoria.planDiasUteisReal}"
-								styleClass="ui-inputfield" />
-						</div>
-					</div>
-					<!-- 					<table width="50%" cellpadding="0" cellspacing="0" border="0"> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Iníco (Previsto)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Fim (Previsto)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Dias Úteis (Previsto)" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:calendar id="planInicioPrev" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.planInicioPrev}" -->
-					<!-- 									showOn="button" locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:planDiasUteisPrev" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:planDiasUteisPrev" /> -->
-					<!-- 								</p:calendar></td> -->
-					<!-- 							<td><p:calendar id="planFimPrev" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.planFimPrev}" showOn="button" -->
-					<!-- 									locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:planDiasUteisPrev" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:planDiasUteisPrev" /> -->
-					<!-- 								</p:calendar></td> -->
-					<!-- 							<td><h:inputText id="planDiasUteisPrev" -->
-					<!-- 									value="#{auditoriaBean.auditoria.planDiasUteisPrev}"> -->
-
-					<!-- 								</h:inputText></td> -->
-
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Início (Realizado)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Fim (Realizado)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Dias Úteis (Realizado)" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:calendar id="planInicioReal" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.planInicioReal}" -->
-					<!-- 									showOn="button" locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:planDiasUteisReal" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:planDiasUteisReal" /> -->
-					<!-- 								</p:calendar></td> -->
-					<!-- 							<td><p:calendar id="planFimReal" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.planFimReal}" showOn="button" -->
-					<!-- 									locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:planDiasUteisReal" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:planDiasUteisReal" /> -->
-					<!-- 								</p:calendar></td> -->
-					<!-- 							<td><h:inputText id="planDiasUteisReal" -->
-					<!-- 									value="#{auditoriaBean.auditoria.planDiasUteisReal}" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 					</table> -->
-				</fieldset>
-				<fieldset class="content-fieldset">
-					<legend>Etapa: Execução</legend>
-					<div class="content-input">
-						<div class="group-input">
-							<p:outputLabel value="Iníco (Previsto)" />
-							<p:calendar id="execInicioPrev" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.execInicioPrev}"
-								showOn="button" locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:execDiasUteisPlan" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:execDiasUteisPlan" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Fim (Previsto)" />
-							<p:calendar id="execFimPrev" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.execFimPrev}" showOn="button"
-								locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:execDiasUteisPlan" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:execDiasUteisPlan" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Dias Úteis (Previsto)" />
-							<h:inputText id="execDiasUteisPlan"
-								value="#{auditoriaBean.auditoria.execDiasUteisPrev}"
-								styleClass="ui-inputfield" />
-						</div>
-					</div>
-
-					<div class="content-input">
-						<div class="group-input">
-							<p:outputLabel value="Início (Realizado)" />
-							<p:calendar id="execInicioReal" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.execInicioReal}"
-								showOn="button" locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:execDiasUteisReal" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:execDiasUteisReal" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Fim (Realizado)" />
-							<p:calendar id="execFimReal" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.execFimReal}" showOn="button"
-								locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:execDiasUteisReal" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:execDiasUteisReal" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Dias Úteis (Realizado)" />
-							<h:inputText id="execDiasUteisReal"
-								value="#{auditoriaBean.auditoria.execDiasUteisReal}"
-								styleClass="ui-inputfield" />
-						</div>
-					</div>
-					<!-- 					<table width="50%" cellpadding="0" cellspacing="0" border="0"> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Iníco (Previsto)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Fim (Previsto)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Dias Úteis (Previsto)" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:calendar id="execInicioPrev" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.execInicioPrev}" -->
-					<!-- 									showOn="button" locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:execDiasUteisPlan" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:execDiasUteisPlan" /> -->
-					<!-- 								</p:calendar></td> -->
-
-					<!-- 							<td><p:calendar id="execFimPrev" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.execFimPrev}" showOn="button" -->
-					<!-- 									locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:execDiasUteisPlan" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:execDiasUteisPlan" /> -->
-					<!-- 								</p:calendar></td> -->
-					<!-- 							<td><h:inputText id="execDiasUteisPlan" -->
-					<!-- 									value="#{auditoriaBean.auditoria.execDiasUteisPrev}" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Início (Realizado)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Fim (Realizado)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Dias Úteis (Realizado)" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:calendar id="execInicioReal" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.execInicioReal}" -->
-					<!-- 									showOn="button" locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:execDiasUteisReal" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:execDiasUteisReal" /> -->
-					<!-- 								</p:calendar></td> -->
-
-					<!-- 							<td><p:calendar id="execFimReal" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.execFimReal}" showOn="button" -->
-					<!-- 									locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:execDiasUteisReal" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:execDiasUteisReal" /> -->
-					<!-- 								</p:calendar></td> -->
-					<!-- 							<td><h:inputText id="execDiasUteisReal" -->
-					<!-- 									value="#{auditoriaBean.auditoria.execDiasUteisReal}" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 					</table> -->
-				</fieldset>
-				<fieldset class="content-fieldset">
-					<legend>Etapa: Emissão de Relatório</legend>
-					<div class="content-input">
-						<div class="group-input">
-							<p:outputLabel value="Iníco (Previsto)" />
-							<p:calendar id="relaInicioPrev" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.relaInicioPrev}"
-								showOn="button" locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:relaDiasUteisPrev" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:relaDiasUteisPrev" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Fim (Previsto)" />
-							<p:calendar id="relaFimPrev" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.relaFimPrev}" showOn="button"
-								locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:relaDiasUteisPrev" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:relaDiasUteisPrev" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Dias Úteis (Previsto)" />
-							<h:inputText id="relaDiasUteisPrev"
-								value="#{auditoriaBean.auditoria.relaDiasUteisPrev}"
-								styleClass="ui-inputfield" />
-						</div>
-					</div>
-
-					<div class="content-input">
-						<div class="group-input">
-							<p:outputLabel value="Início (Realizado)" />
-							<p:calendar id="relaInicioReal" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.relaInicioReal}"
-								showOn="button" locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:relaDiasUteisReal" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:relaDiasUteisReal" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Fim (Realizado)" />
-							<p:calendar id="relaFimReal" pattern="dd/MM/yyyy"
-								value="#{auditoriaBean.auditoria.relaFimReal}" showOn="button"
-								locale="pt_BR">
-								<p:ajax event="change" listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:relaDiasUteisReal" />
-								<p:ajax event="dateSelect"
-									listener="#{auditoriaBean.dateChange}"
-									update=":ProjetoCreateForm:relaDiasUteisReal" />
-							</p:calendar>
-						</div>
-						<div class="group-input">
-							<p:outputLabel value="Dias Úteis (Realizado)" />
-							<h:inputText id="relaDiasUteisReal"
-								value="#{auditoriaBean.auditoria.relaDiasUteisReal}"
-								styleClass="ui-inputfield" />
-						</div>
-					</div>
-					<!-- 					<table width="50%" cellpadding="0" cellspacing="0" border="0"> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Iníco (Previsto)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Fim (Previsto)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Dias Úteis (Previsto)" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:calendar id="relaInicioPrev" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.relaInicioPrev}" -->
-					<!-- 									showOn="button" locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:relaDiasUteisPrev" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:relaDiasUteisPrev" /> -->
-					<!-- 								</p:calendar></td> -->
-
-					<!-- 							<td><p:calendar id="relaFimPrev" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.relaFimPrev}" showOn="button" -->
-					<!-- 									locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:relaDiasUteisPrev" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:relaDiasUteisPrev" /> -->
-					<!-- 								</p:calendar></td> -->
-					<!-- 							<td><h:inputText id="relaDiasUteisPrev" -->
-					<!-- 									value="#{auditoriaBean.auditoria.relaDiasUteisPrev}" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:outputLabel value="Início (Realizado)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Fim (Realizado)" /></td> -->
-					<!-- 							<td><p:outputLabel value="Dias Úteis (Realizado)" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 						<tr> -->
-					<!-- 							<td><p:calendar id="relaInicioReal" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.relaInicioReal}" -->
-					<!-- 									showOn="button" locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:relaDiasUteisReal" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:relaDiasUteisReal" /> -->
-					<!-- 								</p:calendar></td> -->
-
-					<!-- 							<td><p:calendar id="relaFimReal" pattern="dd/MM/yyyy" -->
-					<!-- 									value="#{auditoriaBean.auditoria.relaFimReal}" showOn="button" -->
-					<!-- 									locale="pt_BR"> -->
-					<!-- 									<p:ajax event="change" listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:relaDiasUteisReal" /> -->
-					<!-- 									<p:ajax event="dateSelect" -->
-					<!-- 										listener="#{auditoriaBean.dateChange}" -->
-					<!-- 										update=":ProjetoCreateForm:relaDiasUteisReal" /> -->
-					<!-- 								</p:calendar></td> -->
-					<!-- 							<td><h:inputText id="relaDiasUteisReal" -->
-					<!-- 									value="#{auditoriaBean.auditoria.relaDiasUteisReal}" /></td> -->
-					<!-- 						</tr> -->
-					<!-- 					</table> -->
-				</fieldset>
-			</h:panelGroup>
-
-			<div class="group-button">
-				<p:commandButton value="Salvar" update=":ProjetoCreateForm"
-					styleClass="success" actionListener="#{auditoriaBean.salvar}"
-					icon="ic-save" />
-				<p:commandButton value="Cancelar" styleClass="danger"
-					action="#{auditoriaBean.abrirListaAuditoria}" icon="ic-cancel"
-					immediate="true" />
-			</div>
-
-		</h:form>
-	</ui:define>
-</ui:composition>
+            </h:form>
+        </ui:define>
+    </ui:composition>
 </html>

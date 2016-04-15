@@ -45,6 +45,8 @@ public class AuditoriaBean extends AbstractBean implements Serializable {
     private List<Auditoria> items = new ArrayList<Auditoria>();
 
     private List<UnidadeGestora> unidadeGestoraLista = new ArrayList<UnidadeGestora>();
+    
+    //public List<UnidadeGestora> completeUG = new ArrayList<>();
 
     public AuditoriaBean() {
         super();
@@ -61,7 +63,8 @@ public class AuditoriaBean extends AbstractBean implements Serializable {
     }
 
     public List<UnidadeGestora> completeUG(String query) {
-        List<UnidadeGestora> ugFiltrada = new ArrayList<UnidadeGestora>();
+        List<UnidadeGestora> ugFiltrada = new ArrayList<>();
+        
         for (int i = 0; i < unidadeGestoraLista.size(); i++) {
             UnidadeGestora skin = unidadeGestoraLista.get(i);
             if (skin.getNomeSilga().toLowerCase().startsWith(query)) {
@@ -208,4 +211,6 @@ public class AuditoriaBean extends AbstractBean implements Serializable {
 
     }
 
+    
+    
 }
