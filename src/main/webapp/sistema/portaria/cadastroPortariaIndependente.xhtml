@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="css/jsfcrud.css" />
+</h:head>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+		<h:form id="PortariaCreateForm">
+			<p:messages id="msgid"></p:messages>
+			<h:panelGroup id="display" layout="block">
+				<fieldset>
+					<legend>Dados da Portaria</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+						<tr>
+							<td>No da Portaria</td>
+							<td><p:inputText id="numeroPortaria"
+									value="#{portariaIndependenteBean.portaria.numeroPortaria}" /></td>
+						</tr>
+						<tr>
+							<td>Ano da Portaria</td>
+							<td><p:inputText id="anoPortaria"
+									value="#{portariaIndependenteBean.portaria.anoPortaria}" /></td>
+						</tr>
+						<tr>
+							<td>Data Assinatura</td>
+							<td><p:calendar id="dataAssinatuaPortaria"
+									pattern="dd/MM/yyyy"
+									value="#{portariaIndependenteBean.portaria.dataAssinatuaPortaria}"
+									locale="pt_BR" showOn="button" /></td>
+						</tr>
+						<tr>
+							<td>Tipo de Fiscalização:</td>
+							<td>
+									<p:selectOneMenu id="idTipoFiscalizacao" value="#{portariaIndependenteBean.portaria.tipoFiscalizacao}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione o tipo da fiscalização" itemValue=""/>
+                                    <f:selectItems value="#{sistemaBean.tipoFiscalizacaoList}"
+                                                   var="varTF"
+                                                   itemLabel="#{varTF.nome}"
+                                                   itemValue="#{varTF}"
+                                                   />
+                                </p:selectOneMenu>	
+							</td>
+						</tr>
+						<tr>
+							<td>Deliberação:</td>
+							<td><p:inputText id="deliberacao"
+									value="#{portariaIndependenteBean.portaria.deliberacao}" size="80" /></td>
+						</tr>
+					</table>
+					<fieldset>
+						<legend>Dados da Emissão</legend>
+						<table width="30%" cellpadding="0" cellspacing="10" border="0">
+							<tr>
+								<td>Assinador por:</td>
+								<td><p:selectOneMenu id="servidor"
+										value="#{portariaIndependenteBean.portaria.servidor}"
+										converter="converterPadrao" filter="true">
+										<f:selectItem itemLabel="Assinado por......." itemValue="" />
+										<f:selectItems value="#{sistemaBean.servidorList}" var="varSV"
+											itemLabel="#{varSV.nome}" itemValue="#{varSV}" />
+									</p:selectOneMenu></td>
+							</tr>
+							<tr>
+								<td>No. DOE:</td>
+								<td><p:inputText id="doeNumero"
+										value="#{portariaIndependenteBean.portaria.numeroPublicaDoe}"
+										size="10" /></td>
+							</tr>
+							<tr>
+								<td>Data DOE:</td>
+								<td><p:calendar id="doeData"
+										value="#{portariaIndependenteBean.portaria.dataPublicaDoe}"
+										showOn="button" locale="pt_BR" pattern="dd/MM/yyyy" /></td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>Corpo da Portaria</legend>
+						<table cellpadding="0" cellspacing="10" border="0">
+						 <tr>
+						  <td>
+							 <p:editor id="objetivo"
+									   value="#{portariaIndependenteBean.portaria.objetivo}" />
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+					
+					<fieldset>
+						<legend>Dados da Revogação</legend>
+						<table width="50%" cellpadding="0" cellspacing="10" border="0">
+							<tr>
+								<td width="10%">No da Portaria</td>
+								<td><p:inputText id="numeroPortariaRevogada"
+										value="#{portariaIndependenteBean.portaria.numeroPortariaRevogada}" />
+								</td>
+							</tr>
+							<tr>
+								<td width="10%">Ano da Portaria</td>
+								<td><p:inputText id="anoPortariaRevogada"
+										value="#{portariaIndependenteBean.portaria.anoPortariaRevogada}" />
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</fieldset>
+			</h:panelGroup>
+			<p:commandButton value="Salvar" update=":PortariaCreateForm"
+				actionListener="#" icon="ui-icon-disk" />
+				<p:commandButton  update=":PortariaCreateForm"
+				icon="ui-icon-document" actionListener="#{portariaIndependenteBean.viewPortaria()}"
+				immediate="true" />
+			<p:commandButton value="Cancelar"
+				action="#" icon="ui-icon-close"
+				immediate="true" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

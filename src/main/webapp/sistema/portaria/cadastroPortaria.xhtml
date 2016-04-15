@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="css/jsfcrud.css" />
+</h:head>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+		<h:form id="PortariaCreateForm">
+			<p:messages id="msgid"></p:messages>
+			<h:panelGroup id="display" layout="block">
+				<fieldset>
+					<legend>Auditoria</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+						<tr>
+							<td><p:outputLabel value="Código:" /></td>
+							<td><h:outputText
+									value="#{cadasroPortariaBean.auditoria.idauditoria}" /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Título: " /></td>
+							<td><h:outputText id="titulo"
+									value="#{cadasroPortariaBean.auditoria.titulo}" /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Objetivo: " /></td>
+							<td><h:outputText id="objetivo"
+									value="#{cadasroPortariaBean.auditoria.objetivo}" /></td>
+						</tr>
+					</table>
+ 					
+					<fieldset>
+						<legend>Etapa: Planejamento</legend>
+						<table width="50%" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td><p:outputLabel value="Iníco (Previsto)" /></td>
+								<td><p:outputLabel value="Fim (Previsto)" /></td>
+								<td><p:outputLabel value="Dias Úteis (Previsto)" /></td>
+							</tr>
+							<tr>
+								<td><p:calendar id="planInicio" pattern="dd/MM/yyyy"
+										value="#{cadasroPortariaBean.portaria.planInicio}"
+										locale="pt_BR" showOn="button">
+										<p:ajax event="change"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:planDiasUteis" />
+										<p:ajax event="dateSelect"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:planDiasUteis" />
+									</p:calendar></td>
+								<td><p:calendar id="planFim" pattern="dd/MM/yyyy"
+										value="#{cadasroPortariaBean.portaria.planFim}" locale="pt_BR"
+										showOn="button">
+										<p:ajax event="change"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:planDiasUteis" />
+										<p:ajax event="dateSelect"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:planDiasUteis" />
+
+									</p:calendar></td>
+								<td><h:inputText id="planDiasUteis"
+										value="#{cadasroPortariaBean.portaria.planDiasUteis}" /></td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>Etapa: Execução</legend>
+						<table width="50%" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td><p:outputLabel value="Iníco (Previsto)" /></td>
+								<td><p:outputLabel value="Fim (Previsto)" /></td>
+								<td><p:outputLabel value="Dias Úteis (Previsto)" /></td>
+							</tr>
+							<tr>
+								<td><p:calendar id="execInicio" pattern="dd/MM/yyyy"
+										value="#{cadasroPortariaBean.portaria.execInicio}"
+										locale="pt_BR" showOn="button">
+										<p:ajax event="change"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:execDiasUteis" />
+										<p:ajax event="dateSelect"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:execDiasUteis" />
+									</p:calendar></td>
+								<td><p:calendar id="execFim" pattern="dd/MM/yyyy"
+										value="#{cadasroPortariaBean.portaria.execFim}" locale="pt_BR"
+										showOn="button">
+										<p:ajax event="change"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:execDiasUteis" />
+										<p:ajax event="dateSelect"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:execDiasUteis" />
+									</p:calendar></td>
+								<td><h:inputText id="execDiasUteis"
+										value="#{cadasroPortariaBean.portaria.execDiasUteis}" /></td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>Etapa: Relatório</legend>
+						<table width="50%" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td><p:outputLabel value="Iníco (Previsto)" /></td>
+								<td><p:outputLabel value="Fim (Previsto)" /></td>
+								<td><p:outputLabel value="Dias Úteis (Previsto)" /></td>
+							</tr>
+							<tr>
+								<td><p:calendar id="relaInicio" pattern="dd/MM/yyyy"
+										value="#{cadasroPortariaBean.portaria.relaInicio}"
+										locale="pt_BR" showOn="button">
+										<p:ajax event="change"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:relaDiasUteis" />
+										<p:ajax event="dateSelect"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:relaDiasUteis" />
+									</p:calendar></td>
+								<td><p:calendar id="relaFim" pattern="dd/MM/yyyy"
+										value="#{cadasroPortariaBean.portaria.relaFim}" locale="pt_BR"
+										showOn="button">
+										<p:ajax event="change"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:relaDiasUteis" />
+										<p:ajax event="dateSelect"
+											listener="#{cadasroPortariaBean.dateChange}"
+											update=":PortariaCreateForm:relaDiasUteis" />
+									</p:calendar></td>
+								<td><h:inputText id="relaDiasUteis"
+										value="#{cadasroPortariaBean.portaria.relaDiasUteis}" /></td>
+							</tr>
+						</table>
+					</fieldset>
+
+				</fieldset>
+			</h:panelGroup>
+			<h:panelGroup id="display1">
+				<fieldset>
+					<legend>Dados da Portaria</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+						<tr>
+							<td>No da Portaria</td>
+							<td><p:inputText id="numeroPortaria"
+									value="#{cadasroPortariaBean.portaria.numeroPortaria}" /></td>
+						</tr>
+						<tr>
+							<td>Ano da Portaria</td>
+							<td><p:inputText id="anoPortaria"
+									value="#{cadasroPortariaBean.portaria.anoPortaria}" /></td>
+						</tr>
+						<tr>
+							<td>Data Assinatura</td>
+							<td><p:calendar id="dataAssinatuaPortaria"
+									pattern="dd/MM/yyyy"
+									value="#{cadasroPortariaBean.portaria.dataAssinatuaPortaria}"
+									locale="pt_BR" showOn="button" /></td>
+						</tr>
+						<tr>
+							<td>Tipo de Fiscalização:</td>
+							<td>
+									<p:selectOneMenu id="idTipoFiscalizacao" value="#{cadasroPortariaBean.portaria.tipoFiscalizacao}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione o tipo da fiscalização" itemValue=""/>
+                                    <f:selectItems value="#{sistemaBean.tipoFiscalizacaoList}"
+                                                   var="varTF"
+                                                   itemLabel="#{varTF.nome}"
+                                                   itemValue="#{varTF}"
+                                                   />
+                                </p:selectOneMenu>	
+							</td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Unidade Fiscalizadora" /></td>
+							<td>
+							<p:selectOneMenu id="idUnidadefiscalizadora" value="#{cadasroPortariaBean.portaria.unidadeFiscalizadora}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione a Unidade Fiscalizadora" itemValue=""/>
+                                    <f:selectItems value="#{sistemaBean.unidadeFiscalizadoraList}"
+                                                   var="varUF"
+                                                   itemLabel="#{varUF.sigla}"
+                                                   itemValue="#{varUF}"
+                                                   />
+                                         
+                                </p:selectOneMenu>
+							
+							</td>
+						</tr>						
+						<tr>
+							<td>Jurisdicionado(s):</td>
+							<td>
+							
+							<p:selectCheckboxMenu  id="jusisdicionado" value="#{cadasroPortariaBean.unidadeGestoraSelecionadas}"
+							        label="Jusrisdicionados para a portaria" converter="converterAutoCompletUG" >
+											                              
+            					<f:selectItems value="#{cadasroPortariaBean.unidadeGestoraDaAuditoria}"
+            						var="varUG"
+            						itemLabel="#{varUG.sigla}"
+            						itemValue="#{varUG}" />
+            						
+            						<p:ajax event="change" update=":PortariaCreateForm:display11 :PortariaCreateForm:jusisdicionado" 
+            							    process="@this,:PortariaCreateForm:jusisdicionado" partialSubmit="true" />
+            						
+            						<p:ajax event="toggleSelect" update=":PortariaCreateForm:display11 :PortariaCreateForm:jusisdicionado" 
+            							    process="@this,:PortariaCreateForm:jusisdicionado" partialSubmit="true"/>
+        					</p:selectCheckboxMenu>
+        					 <p:outputPanel id="display11" style="width:250px;padding-left:5px;margin-top:10px">
+        						<p:dataList value="#{cadasroPortariaBean.unidadeGestoraSelecionadas}" var="varUGSelecionada" emptyMessage="nenhuma UG Selecionada">
+            						#{varUGSelecionada.sigla}
+        						</p:dataList>
+    						</p:outputPanel>
+    						    						
+							</td>
+						</tr>
+						<tr>
+							<td>Deliberação:</td>
+							<td><p:inputText id="deliberacao"
+									value="#{cadasroPortariaBean.portaria.deliberacao}" size="80" /></td>
+						</tr>
+					</table>
+					<fieldset>
+						<legend>Dados da Emissão</legend>
+						<table width="30%" cellpadding="0" cellspacing="10" border="0">
+							<tr>
+								<td>Assinador por:</td>
+								<td><p:selectOneMenu id="servidor"
+										value="#{cadasroPortariaBean.portaria.servidor}"
+										converter="converterPadrao" filter="true">
+										<f:selectItem itemLabel="Assinado por......." itemValue="" />
+										<f:selectItems value="#{sistemaBean.servidorList}" var="varSV"
+											itemLabel="#{varSV.nome}" itemValue="#{varSV}" />
+									</p:selectOneMenu></td>
+							</tr>
+							<tr>
+								<td>No. DOE:</td>
+								<td><p:inputText id="doeNumero"
+										value="#{cadasroPortariaBean.portaria.numeroPublicaDoe}"
+										size="10" /></td>
+							</tr>
+							<tr>
+								<td>Data DOE:</td>
+								<td><p:calendar id="doeData"
+										value="#{cadasroPortariaBean.portaria.dataPublicaDoe}"
+										showOn="button" locale="pt_BR" pattern="dd/MM/yyyy" /></td>
+							</tr>
+						</table>
+					</fieldset>
+					<h:panelGroup>
+					<fieldset>
+						<legend>Equipe de Fiscalização</legend>
+					<h:panelGrid>	
+					 <table width="50%" cellpadding="0" cellspacing="10" border="0">
+					 <tr>
+					   <td>Auditor:</td>
+					   <td>
+					   <p:selectOneMenu id="idServidor" value="#{cadasroPortariaBean.equipeFiscalizacao.servidor}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione um servidor" itemValue=""/>
+                                    <f:selectItems value="#{sistemaBean.servidorList}"
+                                                   var="varSRV"
+                                                   itemLabel="#{varSRV.nome}"
+                                                   itemValue="#{varSRV}"
+                                                   />
+                                </p:selectOneMenu>	
+					   </td>
+					 </tr>
+					 <tr>
+					   <td>Cargo:</td>
+					   <td>
+					   <p:selectOneMenu id="idTipoServidor" value="#{cadasroPortariaBean.equipeFiscalizacao.tipoAuditor}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione uma funcção para o servidor" itemValue=""/>
+                                    <f:selectItems value="#{sistemaBean.tipoAuditorList}"
+                                                   var="varTSRV"
+                                                   itemLabel="#{varTSRV.descricao}"
+                                                   itemValue="#{varTSRV}"
+                                                   />
+                                </p:selectOneMenu>					   
+					   </td>
+					 </tr>
+					</table>
+					<p:commandButton value="Adicionar" icon="ui-icon-disk" 
+					                 actionListener="#{cadasroPortariaBean.addEquipe}" partialSubmit="true"
+					                 update=":PortariaCreateForm:display22 :PortariaCreateForm:idServidor :PortariaCreateForm:idTipoServidor" 
+            							    process="@this,:PortariaCreateForm:idServidor,:PortariaCreateForm:idTipoServidor" />
+                    </h:panelGrid>
+                    <h:panelGrid id="display22">
+                    <p:dataTable id="listaEquipe"
+						value="#{cadasroPortariaBean.equipeFiscalizacaoList}" var="s"
+						emptyMessage="Nenhuma Equipe de Fiscalização Enqontrada" rows="20"
+						paginator="true" paginatorPosition="bottom"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						currentPageReportTemplate="({currentPage} de {totalPages})">
+						<p:column headerText="Portaria" width="5%">
+							<h:outputText style="font-weight: bold" value="#{s.portaria.id}" />
+						</p:column>
+						<p:column headerText="Servidor" width="5%">
+							<h:outputText style="font-weight: bold" value="#{s.servidor.nome}" />
+						</p:column>
+						<p:column headerText="Função" width="5%">
+							<h:outputText style="font-weight: bold" value="#{s.tipoAuditor.descricao}" />
+						</p:column>
+						<p:column headerText="Remover" width="5%">
+							<p:commandButton icon="ui-icon-trash" action="#{cadasroPortariaBean.remEquipe(s)}" update=":PortariaCreateForm:display22"></p:commandButton>
+						</p:column>
+					</p:dataTable>
+                    </h:panelGrid>
+					</fieldset>
+					</h:panelGroup>
+					<fieldset>
+						<legend>Processo de Fiscalização</legend>
+						<table width="30%" cellpadding="0" cellspacing="10" border="0">
+							<tr>
+								<td>Número do Processo</td>
+								<td><p:inputText id="processoNumero"
+										value="#{cadasroPortariaBean.portaria.processoNumero}" /></td>
+							</tr>
+							<tr>
+								<td>Ano do Processo</td>
+								<td><p:inputText id="processoAno"
+										value="#{cadasroPortariaBean.portaria.processoAno}" /></td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>Dados da Revogação</legend>
+						<table width="50%" cellpadding="0" cellspacing="10" border="0">
+							<tr>
+								<td width="10%">No da Portaria</td>
+								<td><p:inputText id="numeroPortariaRevogada"
+										value="#{cadasroPortariaBean.portaria.numeroPortariaRevogada}" />
+								</td>
+							</tr>
+							<tr>
+								<td width="10%">Ano da Portaria</td>
+								<td><p:inputText id="anoPortariaRevogada"
+										value="#{cadasroPortariaBean.portaria.anoPortariaRevogada}" />
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+					
+				</fieldset>
+			</h:panelGroup>
+			<p:commandButton value="Salvar" update=":PortariaCreateForm"
+				actionListener="#{cadasroPortariaBean.selecionandoUGP}" icon="ui-icon-disk" />
+			<p:commandButton value="Cancelar"
+				action="#{auditoriaBean.abrirListaAuditoria}" icon="ui-icon-close"
+				immediate="true" />
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

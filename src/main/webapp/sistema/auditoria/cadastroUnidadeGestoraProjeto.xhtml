@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+		<h:form id="ProjetoUGCreateForm">
+			<p:messages id="msgid"></p:messages>
+			<h:panelGroup id="display" layout="block"
+				>
+				<fieldset>
+					<legend>Dados do Projeto</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+					  <tr>
+					    <td>Projeto</td>
+					    <td>Unidade Gestora</td>
+					  </tr>
+					  <tr>
+					  <td>					  
+					  <h:inputHidden value="#{unidadeGestoraProjetoBean.unidadeGestoraProjeto.projeto}" id="idProjeto" >1</h:inputHidden>
+					  </td>
+					  	<td>
+
+					  	
+                                </td>
+					  </tr>
+					</table>
+				</fieldset>
+			</h:panelGroup>
+			
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

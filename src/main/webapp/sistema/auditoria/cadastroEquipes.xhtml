@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="css/jsfcrud.css" />
+</h:head>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+		<h:form id="EquipeCreateForm">
+			<p:messages id="msgid"></p:messages>
+			<h:panelGroup id="display" layout="block" style="height:500px; overflow-y:scroll">
+				<fieldset>
+					<legend>Auditoria</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+						<tr>
+							<td>Código:</td>
+							<td>
+							<h:outputText value="#{equipeFiscalizacaoBean.auditoria.idauditoria}" />
+							</td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Título: " /></td>
+							<td><h:outputText id="titulo" value="#{equipeFiscalizacaoBean.auditoria.titulo}" /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Objetivo: " /></td>
+							<td><h:outputText id="objetivo" value="#{equipeFiscalizacaoBean.auditoria.objetivo}" /></td>
+						</tr>
+						
+					</table>
+				</fieldset>
+				<h:panelGroup id="display2" >
+				<fieldset>
+					<legend>Formação da Equipe de Fiscalização</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+					 <tr>
+					   <td>Auditor:</td>
+					   <td>Seleção do Auditor</td>
+					 </tr>
+					 <tr>
+					   <td>Cargo:</td>
+					   <td>Seleção do Cargo do Auditor</td>
+					 </tr>
+					</table>
+				<p:commandButton value="Adicionar" update=":EquipeCreateForm" icon="ui-icon-disk"/>
+				</fieldset>
+				</h:panelGroup>
+				<h:panelGroup id="display3" layout="block" style="height:100px; overflow-y:scroll">
+				<fieldset>
+					<legend>Equipe de Fiscalização</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+					 <tr>
+					   <td>Auditor:</td>
+					   <td>Função</td>
+					   <td>Opção</td>
+					 </tr>
+					 <tr>
+					   <td>....</td>
+					   <td>....</td>
+					   <td>....</td>
+					 </tr>
+					</table>
+				</fieldset>
+				</h:panelGroup>
+			</h:panelGroup>
+			<p:commandButton value="Salvar" update=":EquipeCreateForm	" actionListener="#{equipeFiscalizacaoBean.salvar}" icon="ui-icon-disk" />
+			<p:commandButton value="Cancelar" action="#{auditoriaBean.abrirListaAuditoria}"  icon="ui-icon-close" immediate="true"/>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

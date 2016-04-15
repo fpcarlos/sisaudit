@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <h:outputStylesheet name="css/jsfcrud.css" />
+    </h:head>
+    <ui:composition template="/template/template.xhtml">
+        <br />
+        <br />
+        <br />
+        <ui:define name="content">
+            <br />
+            <center>Lista de Portarias</center>
+            <br />
+            <h:form id="listaPortariasForm">
+                    <p:dataTable id="listaPortarias"
+                                 value="#{portariaWizardBean.portariaList}" var="s"
+                                 emptyMessage="Nenhuma Portaria Enqontrada" rows="20"
+                                 paginator="true" paginatorPosition="bottom"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 currentPageReportTemplate="({currentPage} de {totalPages})"
+                                 sortBy="#{s.numeroPortaria}">
+                        <p:column headerText="Auditoria" width="5%">
+                            <h:outputText style="font-weight: bold" value="#{s.idAuditoria}" />
+                        </p:column>
+
+                        <p:column headerText="No Portaria" width="5%">
+                            <h:outputText style="font-weight: bold"
+                                          value="#{s.numeroPortaria}" />
+                        </p:column>
+
+                        <p:column headerText="Ano" width="5%">
+                            <h:outputText style="font-weight: bold" value="#{s.anoPortaria}" />
+                        </p:column>
+
+                        <p:column headerText="Sigla Jurisdicionado" width="20%">
+                            <h:outputText style="font-weight: bold"
+                                          value="#{s.listaSiglaUnidadeGestoraDaPortaria}" />
+                        </p:column>
+
+                        <p:column headerText="Objetivo" width="50%">
+                            <h:outputText style="font-weight: bold" value="#{s.objetivo}" />
+                        </p:column>
+
+                        <p:column headerText="Opções" width="20%">
+
+                            <p:commandButton icon="ui-icon-pencil"
+                                             action="#{portariaWizardBean.editarWizardPortaria(s)}"
+                                             title="Editar" escape="true" />
+
+                            <p:commandButton icon="ui-icon-trash"
+                                             action="#{portariaWizardBean.remover(s)}">
+
+                                <p:confirm header="Remover Portaria"
+                                           message="Tem certeza que deseja excluir a Portaria: #{s.numeroPortaria}/#{s.anoPortaria}?"
+                                           icon="ui-icon-alert" />
+
+                            </p:commandButton>
+                            <p:commandButton icon="ui-icon ui-icon-docx"
+                                             ajax="false" title="Donwload"
+                                             actionListener="#{gerarPortariaBean.mesclarPortariaComModelo(s)}">
+                                <p:fileDownload value="#{gerarPortariaBean.file}" />
+                            </p:commandButton>
+
+                        </p:column>
+                    </p:dataTable>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>

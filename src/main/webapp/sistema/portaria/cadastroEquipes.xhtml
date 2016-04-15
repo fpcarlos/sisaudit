@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="css/jsfcrud.css" />
+</h:head>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+		<h:form id="EquipeCreateForm">
+			<p:messages id="msgid"></p:messages>
+			<h:panelGroup id="display" layout="block">
+				<fieldset>
+					<legend>Dados da Portaria</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+					 <tr>
+					   <td>Portaria No:</td>
+					   <td>
+					   <p:outputLabel value="#{equipeFiscalizacaoBean.portaria.id}" />
+					   </td>
+					 </tr>
+					 <tr>
+					   <td>Publicação </td>
+					   <td><p:outputLabel value="#{equipeFiscalizacaoBean.portaria.dataPublicaDoe}"/> </td>
+					 </tr>
+					 <tr>
+					   <td>Assinador Por</td>
+					   <td><p:outputLabel value="#{equipeFiscalizacaoBean.portaria.servidor.nome}"/></td>
+					 </tr>					 
+					</table>
+				</fieldset>
+				</h:panelGroup>		
+			<h:panelGroup id="display1" layout="block">
+				<fieldset>
+					<legend>Formação da Equipe</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+					 <tr>
+					   <td>Auditor:</td>
+					   <td>
+					   <p:selectOneMenu id="idServidor" value="#{equipeFiscalizacaoBean.equipeFiscalizacao.servidor}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione um servidor" itemValue=""/>
+                                    <f:selectItems value="#{sistemaBean.servidorList}"
+                                                   var="varSRV"
+                                                   itemLabel="#{varSRV.nome}"
+                                                   itemValue="#{varSRV}"
+                                                   />
+                                </p:selectOneMenu>	
+					   </td>
+					 </tr>
+					 <tr>
+					   <td>Cargo:</td>
+					   <td>
+					   <p:selectOneMenu id="idTipoServidor" value="#{equipeFiscalizacaoBean.equipeFiscalizacao.tipoAuditor}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione uma funcção para o servidor" itemValue=""/>
+                                    <f:selectItems value="#{sistemaBean.tipoAuditorList}"
+                                                   var="varTSRV"
+                                                   itemLabel="#{varTSRV.descricao}"
+                                                   itemValue="#{varTSRV}"
+                                                   />
+                                </p:selectOneMenu>					   
+					   </td>
+					 </tr>
+					</table>
+				<p:commandButton value="Adicionar" update=":EquipeCreateForm:listaEquipe" icon="ui-icon-disk" actionListener="#{equipeFiscalizacaoBean.salvar}"/>
+				</fieldset>
+				</h:panelGroup>
+				<h:panelGroup id="display3" layout="block" style="height:500px; overflow-y:scroll">
+				<fieldset>
+					<legend>Equipe de Fiscalização</legend>
+					<p:dataTable id="listaEquipe"
+						value="#{equipeFiscalizacaoBean.listaEquipeFiscalizacao}" var="s"
+						emptyMessage="Nenhuma Equipe de Fiscalização Enqontrada" rows="20"
+						paginator="true" paginatorPosition="bottom"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						currentPageReportTemplate="({currentPage} de {totalPages})">
+						<p:column headerText="Portaria" width="5%">
+							<h:outputText style="font-weight: bold" value="#{s.portaria.id}" />
+						</p:column>
+						<p:column headerText="Servidor" width="5%">
+							<h:outputText style="font-weight: bold" value="#{s.servidor.nome}" />
+						</p:column>
+						<p:column headerText="Função" width="5%">
+							<h:outputText style="font-weight: bold" value="#{s.tipoAuditor.descricao}" />
+						</p:column>
+				</p:dataTable>
+				</fieldset>
+			</h:panelGroup>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

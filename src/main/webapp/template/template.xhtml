@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<f:view locale="pt_BR">
+	<h:head>
+		<title><ui:insert name="title">#{msg['titulo-sistema']}</ui:insert></title>
+		<!--<h:outputStylesheet name="style.css" library="css" />-->
+		<h:outputStylesheet name="theme.css" library="css" />
+		<h:outputStylesheet name="icomoon.css" library="css" />
+		<!-- 		<h:outputScript name="scripts.js" library="js" /> -->
+		<h:outputScript name="calendar_ptbr.js" library="js" />
+		<script type="text/javascript" src="/sisaudit/ckeditor/ckeditor.js"></script>
+		<script type="text/javascript"
+			src="/sisaudit/ckeditor/adapters/jquery.js"></script>
+		<script type="text/javascript"
+			src="/sisaudit/ckeditor/ckfinder/ckfinder.js"></script>
+	</h:head>
+	<h:body>
+
+		<p:dialog modal="true" widgetVar="statusDialog"
+			header="Por favor aguarde" draggable="false" closable="false"
+			resizable="false">
+			<p:graphicImage value="/resources/images/barracarregando.gif" />
+		</p:dialog>
+		<div class="toolbar">
+			<div class="logo"></div>
+			<div class="logout">
+				<i class="ic-power_settings_new"></i> <span class="label">sair</span>
+			</div>
+			<div class="user">
+				<i class="ic-account_circle"></i> <span class="label">#</span>
+			</div>
+		</div>
+		<ui:include src="/template/formMenu.xhtml" />
+		<div class="content">
+			<ui:insert name="content">Content</ui:insert>
+		</div>
+		<!-- 		<br /> -->
+		<!-- 		<br /> -->
+		<!-- 		<h:form id="formTemplet"> -->
+		<!-- 			<p:confirmDialog global="true" showEffect="fade"> -->
+		<!-- 				<p:commandButton value="Sim" type="button" -->
+		<!-- 					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" /> -->
+		<!-- 				<p:commandButton value="Não" type="button" -->
+		<!-- 					styleClass="ui-confirmdialog-no" icon="ui-icon-close" /> -->
+		<!-- 			</p:confirmDialog> -->
+		<!-- 		</h:form> -->
+		<!-- 		<div style="height: 200px"> -->
+		<!-- 			<ui:insert name="content">Content</ui:insert> -->
+		<!-- 		</div> -->
+
+	</h:body>
+</f:view>
+</html>
+

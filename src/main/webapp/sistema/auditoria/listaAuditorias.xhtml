@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+		
+
+<!-- 		<center>Lista de Auditorias</center> -->
+		<h:form id="form">
+			<p:dataTable id="listaAuditorias" value="#{auditoriaBean.items}"
+				var="s" emptyMessage="Nenhuma Auditoria Encontrada" rows="12"
+				paginator="true" paginatorPosition="bottom"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				currentPageReportTemplate="({currentPage} de {totalPages})"
+				style="margin-bottom:40px" sortMode="multiple">
+
+				<f:facet name="header">
+		            Lista de Auditorias
+		        </f:facet>
+
+				<p:column headerText="Código" width="12%" sortBy="#{s.idauditoria}">
+					<h:outputText  value="#{s.idauditoria}" />
+				</p:column>
+				<p:column headerText="Ano" width="10%" sortBy="#{s.anoAuditoria}"
+					filterBy="#{s.anoAuditoria}">
+					<h:outputText  value="#{s.anoAuditoria}" />
+				</p:column>
+
+				<p:column headerText="Objetivo" width="25%">
+					<h:outputText  value="#{s.objetivo}" />
+				</p:column>
+				<p:column headerText="Fase Planejamento" colspan="2" width="15%">
+				    <span class="label-fase">Início</span><br></br>
+					<h:outputText  value="#{s.planInicioPrev}">
+						<f:convertDateTime pattern="dd/MM/YYYY" />
+					</h:outputText>
+					<br></br>
+					<span class="label-fase">Fim</span><br></br>
+					<h:outputText  value="#{s.planFimPrev}">
+						<f:convertDateTime pattern="dd/MM/YYYY" />
+					</h:outputText>
+
+				</p:column>
+				<p:column headerText="Fase Execução" colspan="2" width="15%">
+				    <span class="label-fase">Início</span><br></br>
+					<h:outputText  value="#{s.execInicioPrev}">
+						<f:convertDateTime pattern="dd/MM/YYYY" />
+					</h:outputText>
+					<br></br>
+					<span class="label-fase">Fim</span><br></br>
+					<h:outputText  value="#{s.execFimPrev}">
+						<f:convertDateTime pattern="dd/MM/YYYY" />
+					</h:outputText>
+
+				</p:column>
+				<p:column headerText="Fase Relatório" colspan="2" width="15%">
+				    <span class="label-fase">Início</span><br></br>
+					<h:outputText  value="#{s.relaInicioPrev}">
+						<f:convertDateTime pattern="dd/MM/YYYY" />
+					</h:outputText>
+					<br></br>
+					<span class="label-fase">Fim</span><br></br>
+					<h:outputText  value="#{s.relaFimPrev}">
+						<f:convertDateTime pattern="dd/MM/YYYY" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="  " width="8%">
+					<p:commandButton icon="ui-icon-pencil"
+						action="#{auditoriaBean.prepareEdit(s)}" label="Editar Auditoria"></p:commandButton>
+					<p:commandButton icon="ui-icon-person"
+						action="#{portariaWizardBean.preparaCriarPortariaDaAuditoria(s)}"
+						label="Criar Portaria"></p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

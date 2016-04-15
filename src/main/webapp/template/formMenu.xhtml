@@ -1,0 +1,37 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <h:form id="formmenu">
+        <p:menu>
+            <p:submenu label="Navegação">
+                <p:menuitem value="planejamento" ajax="false" icon="ic-lightbulb_outline" />
+                <p:menuitem value="Execução" ajax="false" icon="ic-timelapse" />
+                <p:menuitem value="Relatório" ajax="false" icon="ic-report" />
+            </p:submenu>
+            <p:submenu label="Auditoria">
+                <p:menuitem value="Cadastrar Auditoria"
+                            action="#{auditoriaBean.abrirCadastroAuditoria()}"
+                            icon="ic-find_in_page" />
+                <p:menuitem value="Listagem de Auditorias"
+                            action="#{auditoriaBean.abrirListaAuditoria()}"
+                            icon="ic-list" />
+            </p:submenu>
+            <p:submenu label="Portaria">
+                <p:menuitem value="Cadastrar Portaria"
+                            action="#{portariaWizardBean.abrirCadastroPortaria()}"
+                            icon="ic-gavel" />
+                <p:menuitem value="Listagem de Portarias"
+                            action="#{portariaWizardBean.abrirListaPortaria()}"
+                            icon="ic-list" />
+            </p:submenu>
+            <p:submenu label="Sub-Cadastros">
+                <p:menuitem value="Critérios de Seleção" ajax="false" url="#" icon="ic-note_add" />
+                <p:menuitem value="Origem das Auditorias" ajax="false" url="#" icon="ic-note_add" />
+                <p:menuitem value="Tipo de Fiscalização" ajax="false" url="#" icon="ic-note_add" />
+                <p:menuitem value="Unidades Fiscalizadoras" ajax="false" url="#" icon="ic-note_add" />
+            </p:submenu>
+        </p:menu>
+    </h:form>
+</ui:composition>

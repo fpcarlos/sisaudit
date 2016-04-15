@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="css/jsfcrud.css" />
+</h:head>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+		<h:form id="PortariaCreateForm">
+			<p:messages id="msgid"></p:messages>
+			<h:panelGroup id="display" layout="block">
+				<fieldset>
+					<legend>Auditoria</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+						<tr>
+							<td><p:outputLabel value="Código:" /></td>
+							<td><h:outputText
+									value="#{portariaWizardBean.auditoria.idauditoria}" /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Título: " /></td>
+							<td><h:outputText id="titulo"
+									value="#{portariaWizardBean.auditoria.titulo}" /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Objetivo: " /></td>
+							<td><h:outputText id="objetivo"
+									value="#{portariaWizardBean.auditoria.objetivo}" /></td>
+						</tr>
+					</table>
+					<fieldset>
+						<legend>Etapa: Planejamento</legend>
+						<table width="50%" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td><p:outputLabel value="Iníco (Previsto)" /></td>
+								<td><p:outputLabel value="Fim (Previsto)" /></td>
+								<td><p:outputLabel value="Dias Úteis (Previsto)" /></td>
+							</tr>
+							<tr>
+								<td><p:calendar id="planInicio" pattern="dd/MM/yyyy"
+										value="#{portariaWizardBean.auditoria.planInicioPrev}"
+										locale="pt_BR" readonly="true" showOn="false" /></td>
+								<td><p:calendar id="planFim" pattern="dd/MM/yyyy"
+										value="#{portariaWizardBean.auditoria.planFimPrev}"
+										locale="pt_BR" readonly="true" showOn="false" /></td>
+								<td><h:outputText id="planDiasUteis"
+										value="#{portariaWizardBean.auditoria.planDiasUteisPrev}" />
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>Etapa: Execução</legend>
+						<table width="50%" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td><p:outputLabel value="Iníco (Previsto)" /></td>
+								<td><p:outputLabel value="Fim (Previsto)" /></td>
+								<td><p:outputLabel value="Dias Úteis (Previsto)" /></td>
+							</tr>
+							<tr>
+								<td><p:calendar id="execInicio" pattern="dd/MM/yyyy"
+										value="#{portariaWizardBean.auditoria.execInicioPrev}"
+										locale="pt_BR" readonly="true" showOn="false" /></td>
+								<td><p:calendar id="execFim" pattern="dd/MM/yyyy"
+										value="#{portariaWizardBean.auditoria.execFimPrev}"
+										locale="pt_BR" readonly="true" showOn="false" /></td>
+								<td><h:outputText id="execDiasUteis"
+										value="#{portariaWizardBean.auditoria.execDiasUteisPrev}" />
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+					<fieldset>
+						<legend>Etapa: Relatório</legend>
+						<table width="50%" cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td><p:outputLabel value="Iníco (Previsto)" /></td>
+								<td><p:outputLabel value="Fim (Previsto)" /></td>
+								<td><p:outputLabel value="Dias Úteis (Previsto)" /></td>
+							</tr>
+							<tr>
+								<td><p:calendar id="relaInicio" pattern="dd/MM/yyyy"
+										value="#{portariaWizardBean.auditoria.relaInicioPrev}"
+										locale="pt_BR" readonly="true" showOn="false" /></td>
+								<td><p:calendar id="relaFim" pattern="dd/MM/yyyy"
+										value="#{portariaWizardBean.auditoria.relaFimPrev}"
+										locale="pt_BR" readonly="true" showOn="false" /></td>
+								<td><h:outputText id="relaDiasUteis"
+										value="#{portariaWizardBean.auditoria.relaDiasUteisPrev}" />
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+				</fieldset>
+			</h:panelGroup>
+		</h:form>
+
+		<h:panelGroup>
+			<fieldset>
+				<legend>Portarias Cadastradas</legend>
+				<h:form id="form" prependId="false">
+
+					<p:dataTable id="listaPortarias"
+						value="#{portariaWizardBean.portariaList}" var="s"
+						emptyMessage="Nenhuma Portaria Encontrada" rows="5"
+						paginator="true" paginatorPosition="bottom"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+						currentPageReportTemplate="({currentPage} de {totalPages})">
+
+						<p:column headerText="No Portaria / Ano" width="10%">
+							<h:outputText style="font-weight: bold"
+								value="#{s.numeroPortaria} / #{s.anoPortaria}" />
+						</p:column>
+						<p:column headerText="Objetivo" width="30%">
+							<h:outputText style="font-weight: bold" value="#{s.objetivo}" />
+						</p:column>
+						<p:column headerText="Fase Planejamento" colspan="2" width="10%">
+				    Início:
+					<h:outputText style="font-weight: bold" value="#{s.planInicio}">
+								<f:convertDateTime pattern="dd/MM/YYYY" />
+							</h:outputText>
+							<br></br>
+					Fim:
+					<h:outputText style="font-weight: bold" value="#{s.planFim}">
+								<f:convertDateTime pattern="dd/MM/YYYY" />
+							</h:outputText>
+							<br></br>
+					Dias úteis:
+					<h:outputText style="font-weight: bold" value="#{s.planDiasUteis}" />
+						</p:column>
+						<p:column headerText="Fase Execução" colspan="2" width="10%">
+				    Início:
+					<h:outputText style="font-weight: bold" value="#{s.execInicio}">
+								<f:convertDateTime pattern="dd/MM/YYYY" />
+							</h:outputText>
+							<br></br>
+					Fim:
+					<h:outputText style="font-weight: bold" value="#{s.execFim}">
+								<f:convertDateTime pattern="dd/MM/YYYY" />
+							</h:outputText>
+							<br></br>
+					Dias úteis:
+					<h:outputText style="font-weight: bold" value="#{s.execDiasUteis}" />
+						</p:column>
+						<p:column headerText="Fase Relatório" colspan="2" width="10%">
+				    Início:
+					<h:outputText style="font-weight: bold" value="#{s.relaInicio}">
+								<f:convertDateTime pattern="dd/MM/YYYY" />
+							</h:outputText>
+							<br></br>
+					Fim:
+					<h:outputText style="font-weight: bold" value="#{s.relaFim}">
+								<f:convertDateTime pattern="dd/MM/YYYY" />
+							</h:outputText>
+							<br></br>
+					Dias úteis:
+					<h:outputText style="font-weight: bold" value="#{s.relaDiasUteis}" />
+						</p:column>
+						<p:column headerText="Opções" width="5%">
+							<p:commandButton icon="ui-icon-pencil"
+								action="#{portariaWizardBean.editarWizardPortaria(s)}"
+								title="Editar"></p:commandButton>
+							<p:commandButton process="@all" icon="ui-icon-trash"
+								action="#{portariaWizardBean.remover(s)}" title="Excluir"
+								oncomplete="#{portariaWizardBean.portariaList}"></p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+				</h:form>
+			</fieldset>
+			<h:form>
+				<p:commandButton value="Nova Portaria"
+					action="#{portariaWizardBean.abrirCadastroPortaria()}"
+					icon="ui-icon-disk" immediate="true" />
+				<p:commandButton value="Cancelar"
+					action="#{auditoriaBean.abrirListaAuditoria}" icon="ui-icon-close"
+					immediate="true" />
+			</h:form>
+		</h:panelGroup>
+
+
+	</ui:define>
+</ui:composition>
+</html>

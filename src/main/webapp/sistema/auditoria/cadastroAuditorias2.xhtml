@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<h:outputStylesheet name="css/jsfcrud.css" />
+</h:head>
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="content">
+		<h:form id="ProjetoCreateForm">
+			<p:messages id="msgid"></p:messages>
+			<h:panelGroup id="display" layout="block"
+				style="height:500px;overflow-y:scroll">
+				<fieldset>
+					<legend>Dados do Projeto</legend>
+					<table width="50%" cellpadding="0" cellspacing="10" border="0">
+						<tr>
+							<td><p:outputLabel value="Cod Auditoria" /></td>
+							<td><p:inputText id="idprojeto" value="#{projetoBean.projeto.idprojeto}" size="40" required="true" /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="titulo" /></td>
+							<td><p:inputText id="titulo" value="#{projetoBean.projeto.titulo}" size="80" required="true" /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="objetivo" /></td>
+							<td><p:inputText id="objetivo" value="#{projetoBean.projeto.objetivo}" size="80" required="true" /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="numprocesso" /></td>
+							<td><p:inputText id="numprocesso" value="#{projetoBean.projeto.numprocesso}" size="10"  /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="relator" /></td>
+							<td><p:inputText id="relator" value="#{projetoBean.projeto.relator}" size="40"  /></td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="exerciciosAnteriores" /></td>
+							<td>
+							<p:selectBooleanButton  id="exerciciosAnteriores" value="#{projetoBean.projeto.exerciciosAnteriores}" 
+							                        onLabel="Sim" offLabel="Não" style="width:60px" 
+							                        rendered="#{projetoBean.projeto != null}"  />
+							
+							&nbsp;&nbsp;&nbsp;
+							 
+							<p:outputLabel value="motivacaoFiscal" />
+							<p:inputText id="motivacaoFiscal" value="#{projetoBean.projeto.motivacaoFiscal}" size="40"  />
+							</td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Tipo da Fiscalização" /></td>
+							<td>
+							<p:selectOneMenu id="idTipoFiscalizacao" value="#{projetoBean.projeto.tipofiscalizacao}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione o tipo da fiscalização" itemValue=""/>
+                                    <f:selectItems value="#{sistemaBean.tipoFiscalizacaoList}"
+                                                   var="varTF"
+                                                   itemLabel="#{varTF.nome}"
+                                                   itemValue="#{varTF}"
+                                                   />
+                                </p:selectOneMenu>							
+							</td>
+						</tr>
+
+						<tr>
+							<td><p:outputLabel value="Unidade Fiscalizadora" /></td>
+							<td>
+							<p:selectOneMenu id="idUnidadefiscalizadora" value="#{projetoBean.projeto.unidadefiscalizadora}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione a Unidade Fiscalizadora" itemValue=""/>
+                                    <f:selectItems value="#{sistemaBean.unidadeFiscalizadoraList}"
+                                                   var="varUF"
+                                                   itemLabel="#{varUF.nome}"
+                                                   itemValue="#{varUF}"
+                                                   />
+                                </p:selectOneMenu>
+							
+							</td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Criterio de Seleção" /></td>
+							<td>
+							<p:selectOneMenu id="idCriteriosSelecao" value="#{projetoBean.projeto.criteriosSelecao}" converter="converterPadrao">
+							<f:selectItem itemLabel="Seleione um critério para a auditora" itemValue=""/>
+							<f:selectItems value="#{sistemaBean.criteriosSelecaoList}"
+										   var="varCS"
+										   itemLabel="#{varCS.nome}"
+										   itemValue="#{varCS}"  />
+							</p:selectOneMenu>
+							</td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Origem da Auditoria" /></td>
+							<td>
+							<p:selectOneMenu id="idOrigemProjeto" value="#{projetoBean.projeto.origemprojeto}" converter="converterPadrao">
+							<f:selectItem itemLabel="Selecione uma origem" itemValue=""/>
+							<f:selectItems value="#{sistemaBean.origemAuditoriaList}"
+										   var="varOP"
+										   itemLabel="#{varOP.nome}"
+										   itemValue="#{varOP}"  />
+							</p:selectOneMenu>
+							
+							</td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="Orgão(s) Fiscalizado(s):" /></td>
+							<td></td>
+						</tr>
+					</table>
+				</fieldset>
+				<fieldset>
+					<legend>Fase de Planejamento</legend>
+					<table width="50%" cellpadding="0" cellspacing="0" border="0" >
+						<tr>
+							<td><p:outputLabel value="planInicioPrev" /></td>
+							<td><p:outputLabel value="planFimPrev" /></td>							
+						</tr>
+						<tr>
+							<td>
+							<p:calendar id="planInicioPrev" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.planInicioPrev}"  showOn="button" locale="pt"/>  							
+							</td>
+							<td>
+							<p:calendar id="planFimPrev" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.planFimPrev}" showOn="button" />
+							</td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="planInicioReal" /></td>
+							<td><p:outputLabel value="planFimReal" /></td>
+						</tr>
+						<tr>
+							<td>
+							<p:calendar id="planInicioReal" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.planInicioReal}" showOn="button" locale="pt"/>							
+							</td>
+							<td>
+							<p:calendar id="planFimReal" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.planFimReal}" showOn="button" locale="pt"/>
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+				<fieldset>
+					<legend>Fase de Execução</legend>
+					<table width="50%" cellpadding="0" cellspacing="0" border="0">
+						<tr>
+							<td><p:outputLabel value="execInicioPrev" /></td>
+
+							<td><p:outputLabel value="execFimPrev" /></td>
+						</tr>
+						<tr>
+							<td>
+							<p:calendar id="execInicioPrev" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.execInicioPrev}"  showOn="button" locale="pt"/>							
+							</td>
+
+							<td>
+							<p:calendar id="execFimPrev" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.execFimPrev}"  showOn="button" locale="pt"/>
+							</td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="execInicioReal" /></td>
+
+							<td><p:outputLabel value="execFimReal" /></td>
+						</tr>
+						<tr>
+							<td>
+							<p:calendar id="execInicioReal" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.execInicioReal}" showOn="button" locale="pt"/>
+							</td>
+
+							<td>
+							<p:calendar id="execFimReal" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.execFimReal}" showOn="button" locale="pt"/>
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+				<fieldset>
+					<legend>Fase de Emissão de Relatório</legend>
+					<table width="50%" cellpadding="0" cellspacing="0" border="0">
+						<tr>
+							<td><p:outputLabel value="relaInicioPrev" /></td>
+
+							<td><p:outputLabel value="relaFimPrev" /></td>
+						</tr>
+						<tr>
+							<td>
+							<p:calendar id="relaInicioPrev" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.relaInicioPrev}"  showOn="button" locale="pt"/>							
+							</td>
+
+							<td>
+							<p:calendar id="relaFimPrev" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.relaFimPrev}"  showOn="button" locale="pt"/>
+							</td>
+						</tr>
+						<tr>
+							<td><p:outputLabel value="relaInicioReal" /></td>
+
+							<td><p:outputLabel value="relaFimReal" /></td>
+						</tr>
+						<tr>
+							<td>
+							<p:calendar id="relaInicioReal" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.relaInicioReal}"  showOn="button" locale="pt"/>
+							</td>
+
+							<td>
+							<p:calendar id="relaFimReal" pattern="dd/MM/yyyy" value="#{projetoBean.projeto.relaFimReal}"  showOn="button" locale="pt"/>
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+			</h:panelGroup>
+			<p:commandButton value="Salvar" update=":ProjetoCreateForm" actionListener="#{projetoBean.salvar}" icon="ui-icon-disk" />
+			<p:commandButton value="Cancelar" action="#{projetoBean.abrirListaAuditoria}"  icon="ui-icon-close" immediate="true"/>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

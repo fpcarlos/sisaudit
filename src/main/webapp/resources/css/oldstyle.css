@@ -1,0 +1,173 @@
+@font-face {
+	font-family: 'Arial';
+	src: url('../fonts/arial.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: 'Arial', 'Sans-serif';
+	overflow: hidden;
+	background: #DFE4E6;
+}
+
+.toolbar {
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 70px;
+	background: #FFFFFF;
+	color: #717275;
+	text-transform: uppercase;
+	box-shadow: 0 0 5px rgba(57, 70, 78, 0.3);
+	font-size: 12px;
+	font-weight: 600;
+	z-index: 100;
+}
+
+.toolbar div:hover{
+	color: #283593;
+}
+
+.toolbar .label {
+	vertical-align: 5px;
+}
+
+.logo {
+	display: inline-block;
+	background: url("../images/logoSisAudit.png") no-repeat;
+	background-size: auto 65px;
+	background-position: center;
+	height: 70px;
+	width: 284px;
+}
+
+.user, .logout {
+	display: inline-block;
+	padding: 24px;
+	cursor: pointer;
+	float: right;
+}
+
+.menu {
+	display: block;
+	position: fixed;
+	bottom: 0;
+	padding-bottom: 30px;
+	height: calc(100% - 70px);
+	width: 280px;
+	background: #495458;
+	color: #A8B5B9;
+	overflow: auto;
+}
+
+.title-group-menu {
+	padding: 15px 30px;
+	text-transform: uppercase;
+	font-size: 11px;
+	font-weight: bold;
+	cursor: default;
+}
+
+.item-menu {
+	display: block;
+	position: relative;
+	padding: 10px 30px;
+	text-transform: capitalize;
+	font-size: 14px;
+	cursor: pointer;
+	color: #A8B5B9;
+	text-decoration: none;
+}
+
+.item-menu:visited{
+	color: #A8B5B9;
+}
+
+.item-menu i {
+	padding: 0 16px 0 0;
+	vertical-align: -5px;
+}
+
+.item-menu-active, .item-menu:hover{
+	color: #FFFFFF;
+	background: #647277;
+}
+
+.content {
+	position: fixed;
+	padding: 32px;
+	bottom: 0;
+	right: 0;
+	width: calc(100% - 280px);
+	height: calc(100% - 70px);
+	background: #DFE4E6;
+	overflow: auto;
+}
+
+.content-fieldset{
+	position: relative;
+	padding: 50px 24px;
+	width: 100%;
+	background: #FFFFFF;
+	border: 0;
+}
+
+.content-fieldset legend {
+	position: relative;
+	top: 30px;
+	font-size: 20px;
+}
+
+.content-input{
+	display: block;
+	position: relative;
+	margin-bottom: 20px;
+/* 	outline: 1px solid #FF0080; */
+}
+
+.group-input{
+	display: inline-block;
+	position: relative;
+	margin-right: 10px;
+/* 	outline: 1px solid #FF0080; */
+}
+
+.group-button{
+	display: inline-block;
+	position: relative;
+	margin: 0.75em 0;
+	background: #FFFFFF;
+	padding: 4px 10px;
+}
+
+.group-button .ui-button{
+	margin: 14px;	
+}
+
+.success{
+	background: #66BB6A;
+	color: #FAFAFA;
+}
+
+.info{
+	background: #26C6DA;
+	color: #FAFAFA;
+}
+
+.warning{
+	background: #FBC02D;
+	color: #FAFAFA;
+}
+
+.danger{
+	background: #EF5350;
+	color: #FAFAFA;
+}
