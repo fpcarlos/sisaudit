@@ -42,10 +42,12 @@
 			<description />
 			<role-name>admin</role-name>
 		</auth-constraint>
+                <!--
 		<user-data-constraint>
 			<description>ssl enabled</description>
 			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
 		</user-data-constraint>
+                -->
 	</security-constraint>
 	<security-constraint>
 		<display-name>UserConstraint</display-name>
@@ -61,10 +63,12 @@
 			<role-name>admin</role-name>
 			<role-name>user</role-name>
 		</auth-constraint>
+                <!--
 		<user-data-constraint>
 			<description>ssl enabled</description>
 			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
 		</user-data-constraint>
+                -->
 	</security-constraint>
 	<login-config>
 		<auth-method>FORM</auth-method>
