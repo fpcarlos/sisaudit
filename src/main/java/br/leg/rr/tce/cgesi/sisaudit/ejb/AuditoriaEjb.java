@@ -59,10 +59,11 @@ public class AuditoriaEjb extends AbstractEjb implements Serializable {
 		try {
 			Auditoria aud = new Auditoria();
 			aud = entityManager.find(Auditoria.class, id);
+                        aud.setUnidadeGestoraAuditorias(new ArrayList<>());
 			aud.setUnidadeGestoraAuditorias(unidadeGestoraAuditoriaEjb.findUgId(id));
-			aud.setUnidadeGestoraAuditoriaList(new ArrayList<UnidadeGestoraAuditoria>());
-			aud.setListaUnidadeGestoraTmp(new ArrayList<UnidadeGestora>());
-			aud.setUnidadeGestoraAuditoriasExcluidas(new ArrayList<UnidadeGestoraAuditoria>());
+			aud.setUnidadeGestoraAuditoriaList(new ArrayList<>());
+			aud.setListaUnidadeGestoraTmp(new ArrayList<>());
+			aud.setUnidadeGestoraAuditoriasExcluidas(new ArrayList<>());
 			return aud;			
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
@@ -87,10 +88,8 @@ public class AuditoriaEjb extends AbstractEjb implements Serializable {
 			return listaAuditoria;
 
 		} catch (RuntimeException re) {
-			re.printStackTrace();
 			throw new Exception(" Erro" + re.getMessage());
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new Exception(" Erro" + e.getMessage());
 		}
 

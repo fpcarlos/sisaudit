@@ -10,7 +10,6 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.primefaces.event.SelectEvent;
@@ -22,6 +21,7 @@ import br.leg.rr.tce.cgesi.sisaudit.ejb.AuditoriaEjb;
 import br.leg.rr.tce.cgesi.sisaudit.ejb.CriteriosSelecaoEjb;
 import br.leg.rr.tce.cgesi.sisaudit.entity.Auditoria;
 import br.leg.rr.tce.cgesi.sisaudit.entity.UnidadeGestoraAuditoria;
+import javax.inject.Inject;
 
 @Named("auditoriaBean")
 @SessionScoped
@@ -30,7 +30,7 @@ public class AuditoriaBean extends AbstractBean implements Serializable {
     private static final long serialVersionUID = 1L;
     //@ManagedProperty(value="#{AuditoriaBean}")
 
-    @Inject
+    
     private Auditoria auditoria;
 
     @Inject
@@ -42,9 +42,9 @@ public class AuditoriaBean extends AbstractBean implements Serializable {
     @EJB
     private CriteriosSelecaoEjb criteriosSelecaoEjb;
 
-    private List<Auditoria> items = new ArrayList<Auditoria>();
+    private List<Auditoria> items = new ArrayList<>();
 
-    private List<UnidadeGestora> unidadeGestoraLista = new ArrayList<UnidadeGestora>();
+    private List<UnidadeGestora> unidadeGestoraLista = new ArrayList<>();
     
     //public List<UnidadeGestora> completeUG = new ArrayList<>();
 
@@ -57,7 +57,7 @@ public class AuditoriaBean extends AbstractBean implements Serializable {
     }
 
     public String abrirListaAuditoria() throws Exception {
-        items = new ArrayList<Auditoria>();
+        items = new ArrayList<>();
         items = auditoriaEjb.findAll();
         return redirect("/sistema/auditoria/listaAuditorias.xhtml");
     }
@@ -140,7 +140,7 @@ public class AuditoriaBean extends AbstractBean implements Serializable {
             auditoria = new Auditoria();
             auditoria = auditoriaEjb.carregarAuditoria(aux.getId());
 
-            unidadeGestoraLista = new ArrayList<UnidadeGestora>();
+            unidadeGestoraLista = new ArrayList<>();
             unidadeGestoraLista.addAll(sistemaBean.getUnidadeGestoraList());
             auditoria.setListaUnidadeGestoraTmp(new ArrayList<UnidadeGestora>());
             //preencher lista temp de unidade gestora e eleiminar os duplicados da lista unidadeGestoraLista
@@ -169,10 +169,11 @@ public class AuditoriaBean extends AbstractBean implements Serializable {
         try {
             FacesContext fc = FacesContext.getCurrentInstance();
             ExternalContext ec = fc.getExternalContext();
+            //auditoriaEjb.salvar(auditoria);
 
             auditoriaEjb.salvarBloco(auditoria);
             showFacesMessage("salvo com sucesso!!!", 2);
-            items = new ArrayList<Auditoria>();
+            items = new ArrayList<>();
             items = auditoriaEjb.findAll();
             ec.redirect("listaAuditorias.xhtml");
             //return redirect("sisaudit/sistema/auditoria/listaAuditorias.xhtml?faces-redirect=true");
